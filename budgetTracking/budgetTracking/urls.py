@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from google_authentication import views
+from budgetTracking import budgetTrackingViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path("", views.home, name='home'),
+    path('gestion/', budgetTrackingViews.gestion, name='gestion'),
+    path('add_activity_form/', budgetTrackingViews.add_activity_form, name='add_activity_form'),
+    path('get_new_activity/', budgetTrackingViews.get_new_activity, name='get_new_activity'),
 ]
