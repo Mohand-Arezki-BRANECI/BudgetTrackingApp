@@ -8,3 +8,7 @@ def login(request):
 @login_required
 def home(request):
     return render(request, 'home.html')
+
+@login_required
+def gestion(request):
+    return render(request, 'gestion.html')
