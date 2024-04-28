@@ -18,6 +18,7 @@
         <th>Projection Partielle</th>
         <th>Reste après Projection</th>
         <th>Commentaires</th>
+        <th></th>
     </tr>
     {% for activite in activites %}
     <tr>
@@ -28,6 +29,7 @@
         <td>{{ activite.7 }}</td>
         <td>{{ activite.8 }}</td>
         <td>{{ activite.9 }}</td>
+        <td><button>Ajouter une sous activité</button></td>
     </tr>
     {% endfor %}
 </table>
