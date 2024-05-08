@@ -19,3 +19,6 @@ def get_new_activity(request):
        return gestionController.saveActivity(request)
     else:
         return HttpResponse('Méthode non autorisée')
+
+def home(request):
+    return render(request, 'google_authentication/home.html')  # Assurez-vous que le chemin est correct
