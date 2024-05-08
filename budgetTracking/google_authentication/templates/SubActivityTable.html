@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% for sub_activite in sub_activites %}
+    {% if idParent == sub_activite.1 %}
+    <table border="1">
+        <tr>
+            <th>{{ sub_activite.2 }}</th>
+            <th>Budget Initial</th>
+            <th>Budget Dépensé</th>
+            <th>Reste</th>
+            <th>Projection Partielle</th>
+            <th>Reste après Projection</th>
+            <th>Commentaires</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>{{ sub_activite.3 }}</td>
+            <td>{{ sub_activite.4 }}</td>
+            <td>{{ sub_activite.5 }}</td>
+            <td>{{ sub_activite.6 }}</td>
+            <td>{{ sub_activite.7 }}</td>
+            <td>{{ sub_activite.8 }}</td>
+            <td>{{ sub_activite.9 }}</td>
+            <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ sub_activite.0 }}">Ajouter une sous-activité</a></button></td>
+        </tr>
+        <tr>
+            <td colspan="8">{% include 'SubActivityTable.html' with idParent=sub_activite.0 subActivities=sub_activities %}</td>
+        </tr>
+    </table>
+    {% endif %}
+{% endfor %}
+</body>
+</html>

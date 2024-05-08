@@ -28,5 +28,7 @@ urlpatterns = [
     path("", views.home, name='home'),
     path('gestion/', budgetTrackingViews.gestion, name='gestion'),
     path('add_activity_form/', budgetTrackingViews.add_activity_form, name='add_activity_form'),
+    path('add_subActivity_form/', budgetTrackingViews.add_subActivity_form, name='add_subActivity_form'),
     path('get_new_activity/', budgetTrackingViews.get_new_activity, name='get_new_activity'),
+
 ]
