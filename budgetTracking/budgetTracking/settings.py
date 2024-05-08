@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,8 @@ ROOT_URLCONF = 'budgetTracking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [Path('C:/Users/samra/PythonProjects/BudgetTrackingApp/budgetTracking/google_authentication/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +78,13 @@ WSGI_APPLICATION = 'budgetTracking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'budget_tracking',  # Remplacez par le nom de votre base de données
+        'USER': 'root',                          # Utilisateur MySQL
+        'PASSWORD': 'mysql',                     # Mot de passe MySQL (vide par défaut avec Laragon)
+        'HOST': 'localhost',                     # Adresse de l'hôte MySQL
+        'PORT': '3306',
+
     }
 }
 
@@ -121,3 +129,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'  # ou toute autre URL où vous souhaitez rediriger après la connexion

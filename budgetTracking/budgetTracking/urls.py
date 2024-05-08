@@ -22,7 +22,8 @@ from budgetTracking import budgetTrackingViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login, name='login'),
+    #path('login/', views.login, name='login'),
+    path('accounts/login/', views.login, name='login'),  # Modifier ici pour correspondre à l'URL demandée
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path("", views.home, name='home'),

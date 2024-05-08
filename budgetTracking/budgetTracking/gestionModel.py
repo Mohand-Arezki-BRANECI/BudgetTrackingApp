@@ -5,7 +5,7 @@ def connectToBDD():
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="",
+        password="mysql",
         database="budget_tracking"
     )
     return mydb
