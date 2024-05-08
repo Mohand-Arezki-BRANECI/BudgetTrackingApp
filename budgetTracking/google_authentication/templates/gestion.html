@@ -5,10 +5,9 @@
     <title>Gestion des activités</title>
 </head>
 <body>
-<a href="{% url 'add_activity_form' %}">Ajouter une activité</a>
+<button><a href="{% url 'add_activity_form' %}">Ajouter une activité</a></button>
 
 <h2>Activités</h2>
-<table>
     <table border="1">
     <tr>
         <th>{{ activites.0.2 }}</th>
@@ -21,17 +20,22 @@
         <th></th>
     </tr>
     {% for activite in activites %}
-    <tr>
-        <td>{{ activite.3 }}</td>
-        <td>{{ activite.4 }}</td>
-        <td>{{ activite.5 }}</td>
-        <td>{{ activite.6 }}</td>
-        <td>{{ activite.7 }}</td>
-        <td>{{ activite.8 }}</td>
-        <td>{{ activite.9 }}</td>
-        <td><button>Ajouter une sous activité</button></td>
-    </tr>
+        <tr>
+            <td>{{ activite.3 }}</td>
+            <td>{{ activite.4 }}</td>
+            <td>{{ activite.5 }}</td>
+            <td>{{ activite.6 }}</td>
+            <td>{{ activite.7 }}</td>
+            <td>{{ activite.8 }}</td>
+            <td>{{ activite.9 }}</td>
+            <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a></button></td>
+        </tr>
+        <tr>
+            <td colspan="8">{% include 'SubActivityTable.html' with idParent=activite.0 subActivities=sub_activities %}</td>
+        </tr>
     {% endfor %}
-</table>
+    </table>
+
+
 </body>
 </html>

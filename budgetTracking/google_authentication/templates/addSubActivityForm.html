@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une activité</title>
+    <title>Ajouter une sous-activité</title>
 </head>
 <body>
-<h2>Ajouter une activité</h2>
+<h2>Ajouter une sous-activité</h2>
 <form action="/get_new_activity/" method="POST">
     {% csrf_token %}
 
-    <input type="hidden" name="idParent" value=0>
+    <input name="idParent" value="{{ idParent }}"><br><br>
 
     <label for="libelle">Libellé:</label>
     <input type="text" id="libelle" name="libelle" required><br><br>
