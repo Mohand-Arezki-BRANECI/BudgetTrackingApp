@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une sous-activité</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Gestion des activités{% endblock title %}
+{% block content %}
+<div>
 <h2>Ajouter une sous-activité</h2>
 <form action="/get_new_activity/" method="POST">
     {% csrf_token %}
@@ -37,6 +33,8 @@
     <input type="text" id="commentaires" name="commentaires"><br><br>
 
     <input type="submit" value="Ajouter">
+
 </form>
-</body>
-</html>
+</div>
+{% endblock content%}
+
