@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Gestion des activités{% endblock title %}
 {% block content %}
-    <div class="container">
-        <div class="row justify-content-end mb-3">
-            <div class="col-auto">
-                <button class="btn btn-sm btn-outline-secondary" type="button">
-                    <a href="{% url 'add_activity_form' %}" class="text-decoration-none text-black">Ajouter une activité</a>
-                </button>
-            </div>
+<div class="container">
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto">
+            <button class="btn btn-sm btn-outline-secondary" type="button">
+                <a href="{% url 'add_activity_form' %}" class="text-decoration-none text-black">Ajouter une activité</a>
+            </button>
         </div>
+    </div>
 
-        <h2>Tableau des Activités</h2>
-            <div>
-                <div class="table-responsive">
-                <table class="table">
+    <h2>Tableau des Activités</h2>
+    <div>
+        <div class="table-responsive">
+            <table class="table">
                 <tr>
                     <th>Intitiales</th>
                     <th>Budget Initial</th>
@@ -26,25 +26,23 @@
                 </tr>
                 {% for activite in activites %}
 
-                    <tr>
-                        <th>{{ activites.0.2 }}</th>
+                <tr>
 
-                        <td>{{ activite.3 }}</td>
-                        <td>{{ activite.4 }}</td>
-                        <td>{{ activite.5 }}</td>
-                        <td>{{ activite.6 }}</td>
-                        <td>{{ activite.7 }}</td>
-                        <td>{{ activite.8 }}</td>
-                        <td>{{ activite.9 }}</td>
-                        <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a></button></td>
-                    </tr>
-                    <tr>
-                        <td colspan="7">{% include 'SubActivityTable.html' with idParent=activite.0 subActivities=sub_activities %}</td>
-                    </tr>
+                    <td>{{ activite.3 }}</td>
+                    <td>{{ activite.4 }}</td>
+                    <td>{{ activite.5 }}</td>
+                    <td>{{ activite.6 }}</td>
+                    <td>{{ activite.7 }}</td>
+                    <td>{{ activite.8 }}</td>
+                    <td>{{ activite.9 }}</td>
+                    <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Enregistrer cette sous-activité</a></button></td>
+                </tr>
+                <tr>
+                    <td colspan="7">{% include 'SubActivityTable.html' with idParent=activite.0 subActivities=sub_activities %}</td>
+                </tr>
                 {% endfor %}
-                </table>
-            </div>
-            </div>
+            </table>
+        </div>
     </div>
+</div>
 {% endblock content %}
-
