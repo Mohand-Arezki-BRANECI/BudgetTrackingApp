@@ -48,26 +48,26 @@ def getActivities():
 
     return resultats
 
-
-def getSubActivities():
+def getActivityById(idActivity):
     db = connectToBDD()
     cursor = db.cursor()
 
-    requete_select = "SELECT * FROM activite WHERE id_parent != 0"
+    requete_select = "SELECT * FROM activite WHERE id = %s"
 
-    cursor.execute(requete_select)
-    resultats = cursor.fetchall()
+    cursor.execute(requete_select, (idActivity,))
+    resultat = cursor.fetchall()
 
     cursor.close()
     db.close()
 
-    return resultats
+    return resultat
+
 
 def getSubActivitiesByIdParent(idParent):
     db = connectToBDD()
     cursor = db.cursor()
 
-    requete_select = "SELECT * FROM activite WHERE id_parent != %s"
+    requete_select = "SELECT * FROM activite WHERE id_parent = %s"
 
     cursor.execute(requete_select, (idParent,))
     resultats = cursor.fetchall()

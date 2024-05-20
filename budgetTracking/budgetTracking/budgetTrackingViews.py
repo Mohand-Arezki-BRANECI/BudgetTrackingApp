@@ -7,8 +7,7 @@ from budgetTracking import gestionController, gestionModel
 @login_required
 def gestion(request):
     activities = gestionModel.getActivities()
-    sub_activities = gestionModel.getSubActivities()
-    return render(request, 'gestion.html', {'activites': activities, 'sub_activites': sub_activities})
+    return render(request, 'gestion.html', {'activites': activities})
 
 
 @login_required
