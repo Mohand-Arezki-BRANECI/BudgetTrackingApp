@@ -10,12 +10,16 @@
         </div>
     </div>
 
+    {% load gestion_tags %}
+
+    <p>{{ 26|get_budget_depense }}</p>
+
     <h2>Tableau des Activités</h2>
     <div>
         <div class="table-responsive">
             <table class="table">
                 <tr>
-                    <th>Intitiales</th>
+                    <th>{{ activites.0.2 }}</th>
                     <th>Budget Initial</th>
                     <th>Budget Dépensé</th>
                     <th>Reste</th>
@@ -25,21 +29,27 @@
                     <th></th>
                 </tr>
                 {% for activite in activites %}
-
-                <tr>
-
-                    <td>{{ activite.3 }}</td>
-                    <td>{{ activite.4 }}</td>
-                    <td>{{ activite.5 }}</td>
-                    <td>{{ activite.6 }}</td>
-                    <td>{{ activite.7 }}</td>
-                    <td>{{ activite.8 }}</td>
-                    <td>{{ activite.9 }}</td>
-                    <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Enregistrer cette sous-activité</a></button></td>
-                </tr>
-                <tr>
-                    <td colspan="7">{% include 'SubActivityTable.html' with idParent=activite.0 subActivities=sub_activities %}</td>
-                </tr>
+                    <tr>
+                        <td>{{ activite.3 }}</td>
+                        <td>{{ activite.4 }}</td>
+                        <td>{{ activite.5 }}</td>
+                        <td>{{ activite.6 }}</td>
+                        <td>{{ activite.7 }}</td>
+                        <td>{{ activite.8 }}</td>
+                        <td>{{ activite.9 }}</td>
+                        <td>
+                            <button>
+                                <a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a>
+                            </button>
+                        </td>
+                    </tr>
+                    {% if activite.0|get_sub_activities_by_id_parent %}
+                        <tr>
+                            <td colspan="8">
+                                {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </table>
         </div>
