@@ -5,6 +5,11 @@
     <title>Gestion des activités</title>
 </head>
 <body>
+
+{% load gestion_tags %}
+
+<p> {{ 26|get_budget_depense }}</p>
+
 <button><a href="{% url 'add_activity_form' %}">Ajouter une activité</a></button>
 
 <h2>Activités</h2>
@@ -30,9 +35,11 @@
             <td>{{ activite.9 }}</td>
             <td><button><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a></button></td>
         </tr>
-        <tr>
-            <td colspan="8">{% include 'SubActivityTable.html' with idParent=activite.0 subActivities=sub_activities %}</td>
-        </tr>
+        {% if activite.0|get_sub_activities_by_id_parent %}
+            <tr>
+                <td colspan="8">{% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}</td>
+            </tr>
+        {% endif %}
     {% endfor %}
     </table>
 
