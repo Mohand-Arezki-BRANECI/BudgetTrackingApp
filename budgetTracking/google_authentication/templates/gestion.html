@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Gestion des activités{% endblock title %}
+
 {% block content %}
+
+{% load gestion_tags %}
+
 <div class="container">
     <div class="row justify-content-end mb-3">
         <div class="col-auto">
@@ -10,49 +14,53 @@
         </div>
     </div>
 
-    {% load gestion_tags %}
-
-    <p>{{ 26|get_budget_depense }}</p>
-
     <h2>Tableau des Activités</h2>
     <div>
         <div class="table-responsive">
-            <table class="table">
-                <tr>
-                    <th>{{ activites.0.2 }}</th>
-                    <th>Budget Initial</th>
-                    <th>Budget Dépensé</th>
-                    <th>Reste</th>
-                    <th>Projection Partielle</th>
-                    <th>Reste après Projection</th>
-                    <th>Commentaires</th>
-                    <th></th>
-                </tr>
+            <table class="table table-bordered">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>{{ activites.0.2 }}</th>
+                        <th>Budget Initial</th>
+                        <th>Budget Dépensé</th>
+                        <th>Reste</th>
+                        <th>Projection Partielle</th>
+                        <th>Reste après Projection</th>
+                        <th>Commentaires</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
                 {% for activite in activites %}
-                <tr>
-                    <td>{{ activite.3 }}</td>
-                    <td>{{ activite.4 }}</td>
-                    <td>{{ activite.5 }}</td>
-                    <td>{{ activite.6 }}</td>
-                    <td>{{ activite.7 }}</td>
-                    <td>{{ activite.8 }}</td>
-                    <td>{{ activite.9 }}</td>
-                    <td>
-                        <button>
-                            <a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a>
-                        </button>
-                    </td>
-                </tr>
-                {% if activite.0|get_sub_activities_by_id_parent %}
-                <tr>
-                    <td colspan="8">
+                <tbody>
+                    <tr>
+                        <td>{{ activite.3 }}</td>
+                        <td>{{ activite.4 }}</td>
+                        <td>{{ activite.5 }}</td>
+                        <td>{{ activite.6 }}</td>
+                        <td>{{ activite.7 }}</td>
+                        <td>{{ activite.8 }}</td>
+                        <td>{{ activite.9 }}</td>
+                        <td>
+                            <button class="btn btn-outline-primary" type="button"><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
+                            <button class="btn btn-outline-warning" type="button">UPG</button>
+                            <button class="btn btn-outline-danger" type="button">DEL</button>
+                        </td>
+                    </tr>
+
+                    {% if activite.0|get_sub_activities_by_id_parent %}
+                    <tr>
                         {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}
-                    </td>
-                </tr>
-                {% endif %}
+                    </tr>
+                    {% endif %}
+
+                </tbody>
                 {% endfor %}
+
             </table>
         </div>
     </div>
 </div>
+    </div></div>
 {% endblock content %}
