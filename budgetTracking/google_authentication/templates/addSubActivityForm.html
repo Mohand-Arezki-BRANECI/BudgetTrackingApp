@@ -10,7 +10,9 @@
 <form action="/get_new_activity/" method="POST">
     {% csrf_token %}
 
-    <input name="idParent" value="{{ idParent }}"><br><br>
+    <input type="hidden" name="id" value="">
+
+    <input name="id_parent" value="{{ idParent }}"><br><br>
 
     <label for="libelle">Libellé:</label>
     <input type="text" id="libelle" name="libelle" required><br><br>

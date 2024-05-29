@@ -12,8 +12,6 @@
 
     {% load gestion_tags %}
 
-    <p>{{ 26|get_budget_depense }}</p>
-
     <h2>Tableau des Activités</h2>
     <div>
         <div class="table-responsive">
@@ -40,6 +38,9 @@
                     <td>
                         <button>
                             <a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a>
+                        </button>
+                        <button class="btn btn-outline-warning" type="button">
+                            <a href="{% url 'modify_activity_form' %}?activite={{ activite }}">Modifier l'activité</a>
                         </button>
                     </td>
                 </tr>

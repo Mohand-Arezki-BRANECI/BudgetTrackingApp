@@ -10,7 +10,9 @@
 <form action="/get_new_activity/" method="POST">
     {% csrf_token %}
 
-    <input type="hidden" name="idParent" value=0>
+    <input type="hidden" name="id" value="">
+
+    <input type="hidden" name="id_parent" value=0>
 
     <label for="libelle">Libellé:</label>
     <input type="text" id="libelle" name="libelle" required><br><br>
