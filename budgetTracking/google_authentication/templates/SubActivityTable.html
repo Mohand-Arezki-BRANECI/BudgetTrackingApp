@@ -1,30 +1,41 @@
 {% block content %}
 {% load gestion_tags %}
 
-    <thead>
-        <tr>
-            <th colspan="8">{{ subActivities.0.2 }}</th>
-        </tr>
-    </thead>
 
-    {% for activite in subActivities %}
-        <tr>
-            <td>{{ activite.3 }}</td>
-            <td>{{ activite.4 }}</td>
-            <td>{{ activite.5 }}</td>
-            <td>{{ activite.6 }}</td>
-            <td>{{ activite.7 }}</td>
-            <td>{{ activite.8 }}</td>
-            <td>{{ activite.9 }}</td>
-            <td>
-                <button class="btn btn-outline-primary" type="button"><a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
+<tr class="table-dark">
+    <th>{{ subActivities.0.2 }}</th>
+    <th>Budget Initial</th>
+    <th>Budget Dépensé</th>
+    <th>Reste</th>
+    <th>Projection Partielle</th>
+    <th>Reste après Projection</th>
+    <th>Commentaires</th>
+    <th>colspan="7"</th>
 
-            </td>
-        </tr>
-            {% if activite.0|get_sub_activities_by_id_parent %}
-                <tr> {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}</td></tr>
-            {% endif %}
-    {% endfor %}
+</tr>
+
+{% for activite in subActivities %}
+<tr>
+    <td>{{ activite.3 }}</td>
+    <td>{{ activite.4 }}</td>
+    <td>{{ activite.5 }}</td>
+    <td>{{ activite.6 }}</td>
+    <td>{{ activite.7 }}</td>
+    <td>{{ activite.8 }}</td>
+    <td>{{ activite.9 }}</td>
+    <td>
+        <button class="btn btn-outline-primary" type="button"><a
+                href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
+        <button class="btn btn-outline-warning" type="button">UPG</button>
+        <button class="btn btn-outline-danger" type="button">DEL</button>
+    </td>
+</tr>
+<tr>
+    {% if activite.0|get_sub_activities_by_id_parent %}
+    {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}
+    {% endif %}
+</tr>
+{% endfor %}
 
 {% endblock content %}
 
