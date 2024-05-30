@@ -3,6 +3,7 @@
 
 # Exclude Python cache files
 __pycache__/
+budgetTracking/google_authentication/__pycache__/
 *.pyc
 
 settings.py
