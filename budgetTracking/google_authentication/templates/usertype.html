@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Choose User Type{% endblock title %}
+{% block content %}
+<div class="row">
+    <h4 class="text-center text-success">Welcome {{user.first_name}}</h4>
+    <label for="">Choose a profile:</label>
+
+    <select name="profile" id="profile-select">
+      <option value="">--Please choose an option--</option>
+      <option value="dsi">DSI</option>
+      <option value="simple">Simple</option>
+    </select>
+        <button type="submit">Submit</button>
+</div>
+{% endblock content %}
+</body>
+</html>
