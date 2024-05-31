@@ -1,5 +1,5 @@
 # Exclude IDE configuration directories
-.idea/
+
 
 # Exclude Python cache files
 __pycache__/
@@ -8,5 +8,3 @@ budgetTracking/google_authentication/__pycache__/
 
 settings.py
 
-# Exclude Django secret key file (if using a separate secret key file) [secret_key.txt]
-.env
