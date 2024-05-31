@@ -10,10 +10,12 @@
 
             {% csrf_token %}
             <h5>User - {{user.username}}</h5>
+          
+            <input type="hidden" name="id" value="">
 
             <div class="row  p-3 mb-5  rounded">
                 <div class="col-auto">
-                    <input value="{{ idParent }}" disabled>
+                    <input name="id_parent" value="{{ idParent }}" disabled>
                     <input type="hidden" name="idParent" value="{{ idParent }}">
 
                 </div>

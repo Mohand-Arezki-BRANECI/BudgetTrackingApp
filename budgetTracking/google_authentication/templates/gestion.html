@@ -46,7 +46,8 @@
                     <td>
                         <button class="btn btn-outline-primary" type="button"><a
                                 href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
-                        <button class="btn btn-outline-warning" type="button">UPG</button>
+                        <button class="btn btn-outline-warning" type="button">
+                                <a href="{% url 'modify_activity_form' %}?activite={{ activite }}">UPG</a></button>
                         <button class="btn btn-outline-danger" type="button">DEL</button>
                     </td>
                 </tr>
