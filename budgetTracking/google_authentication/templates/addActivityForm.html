@@ -1,44 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter une activité</title>
-</head>
-<body>
-<h2>Ajouter une activité</h2>
-<form action="/get_new_activity/" method="POST">
-    {% csrf_token %}
+{% extends "base.html" %}
+{% block title %}Ajouter une activité{% endblock title %}
+{% block content %}
 
-    <input type="hidden" name="id" value="">
+<form class="p-5" action="/get_new_activity/" method="POST" style="width: 100%">
 
-    <input type="hidden" name="id_parent" value=0>
+    <div class="card-body text-center">
 
-    <label for="libelle">Libellé:</label>
-    <input type="text" id="libelle" name="libelle" required><br><br>
+        <div class="row m-3 shadow-lg p-3 bg-body-tertiary rounded">
 
-    <label for="nom">Nom:</label>
-    <input type="text" id="nom" name="nom" required><br><br>
+        {% csrf_token %}
+        <h5 class="mb-3 mt-3 ">User - {{user.username}}</h5>
 
-    <label for="budget_initial">Budget initial:</label>
-    <input type="number" id="budget_initial" name="budget_initial" required><br><br>
+        <hr>
 
-    <label for="budget_depense">Budget dépensé:</label>
-    <input type="number" id="budget_depense" name="budget_depense" required><br><br>
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="id_parent" value=0>
 
-    <label for="reste">Reste:</label>
-    <input type="number" id="reste" name="reste" required><br><br>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="text" class="form-control" placeholder="libellé" aria-label="Libelle" id="libelle"
+                       name="libelle" required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom"
+                       required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="number" class="form-control" placeholder="Budget initial"
+                       aria-label="budget_initial" id="budget_initial" name="budget_initial" required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="number" class="form-control" placeholder="Budget dépensé"
+                       aria-label="budget_depense" id="budget_depense" name="budget_depense" required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary ">
+                <input type="number" class="form-control" placeholder="Reste" aria-label="reste" id="reste"
+                       name="reste" required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="number" class="form-control" placeholder="Projection partielle"
+                       aria-label="projection_partielle" id="projection_partielle" name="projection_partielle"
+                       required>
+            </div>
+            <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                <input type="number" class="form-control" placeholder="Reste après projection"
+                       aria-label="reste_apres_projection" id="reste_apres_projection"
+                       name="reste_apres_projection" required>
+            </div>
+            <div class="col-sm-12 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <textarea type="textarea" class="form-control" placeholder="Commentaires" aria-label="commentaires"
+                              id="commentaires" name="commentaires"></textarea>
+            </div>
+            <input type="submit" class="btn btn-success" value="Ajouter">
 
-    <label for="projection_partielle">Projection partielle:</label>
-    <input type="number" id="projection_partielle" name="projection_partielle" required><br><br>
-
-    <label for="reste_apres_projection">Reste après projection:</label>
-    <input type="number" id="reste_apres_projection" name="reste_apres_projection" required><br><br>
-
-    <label for="commentaires">Commentaires:</label>
-    <input type="text" id="commentaires" name="commentaires"><br><br>
-
-    <input type="submit" value="Ajouter">
+        </div>
+    </div>
 </form>
-</body>
-</html>
+
+{% endblock content %}
+

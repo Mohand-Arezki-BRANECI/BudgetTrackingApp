@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Gestion des activités{% endblock title %}
+
 {% block content %}
+
+
 <div class="container">
     <div class="row justify-content-end mb-3">
         <div class="col-auto">
@@ -15,7 +18,9 @@
     <h2>Tableau des Activités</h2>
     <div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-bordered">
+
+                <thead class="table-dark">
                 <tr>
                     <th>{{ activites.0.2 }}</th>
                     <th>Budget Initial</th>
@@ -24,8 +29,11 @@
                     <th>Projection Partielle</th>
                     <th>Reste après Projection</th>
                     <th>Commentaires</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
+                </thead>
+                <tbody>
+
                 {% for activite in activites %}
                 <tr>
                     <td>{{ activite.3 }}</td>
@@ -36,22 +44,23 @@
                     <td>{{ activite.8 }}</td>
                     <td>{{ activite.9 }}</td>
                     <td>
-                        <button>
-                            <a href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">Ajouter une sous-activité</a>
-                        </button>
+                        <button class="btn btn-outline-primary" type="button"><a
+                                href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
                         <button class="btn btn-outline-warning" type="button">
-                            <a href="{% url 'modify_activity_form' %}?activite={{ activite }}">Modifier l'activité</a>
-                        </button>
+                                <a href="{% url 'modify_activity_form' %}?activite={{ activite }}">UPG</a></button>
+                        <button class="btn btn-outline-danger" type="button">DEL</button>
                     </td>
                 </tr>
-                {% if activite.0|get_sub_activities_by_id_parent %}
                 <tr>
-                    <td colspan="8">
-                        {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}
-                    </td>
-                </tr>
+                {% if activite.0|get_sub_activities_by_id_parent %}
+
+                    {% include 'SubActivityTable.html' with subActivities=activite.0|get_sub_activities_by_id_parent %}
+
                 {% endif %}
+                </tr>
+
                 {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
