@@ -24,5 +24,13 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('social-auth/', include('social_django.urls', namespace='social')),
-    path("", views.home, name='home'),
+    path('choose-user-type/', views.choose_user_type, name='choose_user_type'),
+    path("", views.login, name='login'),
+    #path("", views.choose_user_type, name='choose_user_type'),
+    path('home', views.home, name='home'),
+    path('insert_user', views.insert_user, name='insert_user'),
+    path('gestion', views.gestion, name='gestion'),
+    
+
+    
 ]
