@@ -5,7 +5,7 @@ import ast
 
 from budgetTracking import gestionController, gestionModel
 
-@login_required
+
 def gestion(request):
     activities = gestionModel.getActivities()
     return render(request, 'gestion.html', {'activites': activities})
