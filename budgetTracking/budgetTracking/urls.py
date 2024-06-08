@@ -18,19 +18,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from google_authentication import views
+from budgetTracking import budgetTrackingViews
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login, name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/login/', views.login, name='login'),
+    path('logout/', views.login, name='logout'),
     path('social-auth/', include('social_django.urls', namespace='social')),
-    path('choose-user-type/', views.choose_user_type, name='choose_user_type'),
-    path("", views.login, name='login'),
-    #path("", views.choose_user_type, name='choose_user_type'),
-    path('home', views.home, name='home'),
-    path('insert_user', views.insert_user, name='insert_user'),
-    path('gestion', views.gestion, name='gestion'),
-    
-
-    
+    path("", views.home, name='home'),
+    path('gestion/', budgetTrackingViews.gestion, name='gestion'),
+    path('add_activity_form/', budgetTrackingViews.add_activity_form, name='add_activity_form'),
+    path('add_subActivity_form/', budgetTrackingViews.add_subActivity_form, name='add_subActivity_form'),
+    path('modify_activity_form/', budgetTrackingViews.modify_activity_form, name='modify_activity_form'),
+    path('get_new_activity/', budgetTrackingViews.get_new_activity, name='get_new_activity'),
+    path('modify_activity/', budgetTrackingViews.modify_activity, name='modify_activity'),
 ]

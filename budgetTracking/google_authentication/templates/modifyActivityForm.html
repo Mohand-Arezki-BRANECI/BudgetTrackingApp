@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier une activité</title>
+</head>
+<body>
+<h2>Modifier une activité</h2>
+<form action="/modify_activity/" method="POST">
+    
+    {% csrf_token %}
+
+    <input type="hidden" id="id" name="id" value="{{ id }}">
+
+    <input type="number" id="idParent" name="idParent" value="{{ idParent }}"><br><br>
+
+    <label for="libelle">Libellé:</label>
+    <input type="text" id="libelle" name="libelle" value="{{ libelle }}" required><br><br>
+
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" name="nom" value="{{ nom }}" required><br><br>
+
+    <label for="budget_initial">Budget initial:</label>
+    <input type="number" id="budget_initial" name="budget_initial" value="{{ budget_initial }}" required><br><br>
+
+    <input type="hidden" id="budget_depense" name="budget_depense" value="{{ budget_depense }}">
+
+    <label for="projection_partielle">Projection partielle:</label>
+    <input type="number" id="projection_partielle" name="projection_partielle" value="{{ projection_partielle }}" required><br><br>
+
+    <label for="commentaires">Commentaires:</label>
+    <input type="text" id="commentaires" name="commentaires" value="{{ commentaires }}"><br><br>
+
+    <input type="submit" value="Modifier">
+</form>
+</body>
+</html>
+
+<!-- nv -->
