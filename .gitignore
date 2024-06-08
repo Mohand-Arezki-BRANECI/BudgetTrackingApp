@@ -1,0 +1,11 @@
+# Exclude IDE configuration directories
+.idea/
+
+# Exclude Python cache files
+_pycache_/
+budgetTracking/google_authentication/_pycache_/
+*.pyc
+
+settings.py
+
+# Exclude Django secret key file (if using a separate secret key file) [secret_key.txt]
