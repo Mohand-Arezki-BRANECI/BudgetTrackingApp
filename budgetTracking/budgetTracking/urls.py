@@ -29,7 +29,7 @@ urlpatterns = [
     #path("", views.choose_user_type, name='choose_user_type'),
     path('home', views.home, name='home'),
     path('insert_user', views.insert_user, name='insert_user'),
-    path('gestion', views.gestion, name='gestion'),
+    path('gestion/', views.gestion, name='gestion'),
     
 
     
