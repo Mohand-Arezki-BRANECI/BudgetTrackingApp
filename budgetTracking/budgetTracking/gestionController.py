@@ -9,7 +9,7 @@ def saveActivity(request):
     libelle = request.POST['libelle']
     nom = request.POST['nom']
     budget_initial = request.POST['budget_initial']
-    budget_depense = 0
+    budget_depense = request.POST['budget_depense']
     reste = request.POST['budget_initial']
     projection_partielle = request.POST['projection_partielle']
     reste_apres_projection = int(request.POST['budget_initial']) - int(request.POST['projection_partielle'])
@@ -29,7 +29,11 @@ def saveActivity(request):
 
 def updateBudgetDepense(id, budget_initial):
     activity = gestionModel.getActivityById(id)
-    budgetDepense = int(activity[0][5]) + int(budget_initial)
+    subActivities = gestionModel.getSubActivitiesByIdParent(id)
+    budgetDepense = 0
+    for subActivity in subActivities : 
+        budgetDepense += subActivity[4]
+        print(budgetDepense)
     gestionModel.updateBudgetDepense(id, budgetDepense)
 
 def updateReste(id, budget_initial):
@@ -37,5 +41,3 @@ def updateReste(id, budget_initial):
         activity = gestionModel.getActivityById(id)
         reste = int(activity[0][6]) - int(budget_initial)
         gestionModel.updateReste(id, reste)
-
-#nv
