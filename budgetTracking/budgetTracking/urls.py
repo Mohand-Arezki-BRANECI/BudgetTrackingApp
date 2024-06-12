@@ -23,8 +23,8 @@ from budgetTracking import budgetTrackingViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/login/', views.login, name='login'),
-    path('logout/', views.login, name='logout'),
+    path('login/', views.login, name='login'),
+    #path('logout/', views.login, name='logout'),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path("", views.home, name='home'),
     path('gestion/', budgetTrackingViews.gestion, name='gestion'),
@@ -33,4 +33,12 @@ urlpatterns = [
     path('modify_activity_form/', budgetTrackingViews.modify_activity_form, name='modify_activity_form'),
     path('get_new_activity/', budgetTrackingViews.get_new_activity, name='get_new_activity'),
     path('modify_activity/', budgetTrackingViews.modify_activity, name='modify_activity'),
+    
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('choose-user-type/', views.choose_user_type, name='choose_user_type'),
+    #path("", views.choose_user_type, name='choose_user_type'),
+    path('home', views.home, name='home'),
+    path('insert_user/', views.insert_user, name='insert_user'),
+    path('gestion/', views.gestion, name='gestion'),
+    
 ]

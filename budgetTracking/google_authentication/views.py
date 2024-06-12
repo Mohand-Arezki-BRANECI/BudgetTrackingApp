@@ -28,7 +28,7 @@ def insert_user(request):
         query = User(user_first_name = user_first_name, user_last_name = user_last_name, user_email = user_email, user_type = user_type)
         query.save()
     # redirecting to home after persistance
-    return render(request, 'gestion.html')
+    return render(request, 'home.html')
 
 def gestion(request):
     return render(request, 'gestion.html')
