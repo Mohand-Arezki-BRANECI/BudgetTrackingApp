@@ -9,7 +9,7 @@ def saveActivity(request):
     libelle = request.POST['libelle']
     nom = request.POST['nom']
     budget_initial = request.POST['budget_initial']
-    budget_depense = request.POST['budget_depense']
+    budget_depense = 0
     reste = request.POST['budget_initial']
     projection_partielle = request.POST['projection_partielle']
     reste_apres_projection = int(request.POST['budget_initial']) - int(request.POST['projection_partielle'])
