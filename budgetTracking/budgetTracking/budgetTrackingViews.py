@@ -63,6 +63,3 @@ def modify_activity(request):
         return gestionController.saveActivity(request)
     else:
         return HttpResponse('Méthode non autorisée')
-
-
-#nv

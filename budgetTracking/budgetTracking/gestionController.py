@@ -22,12 +22,12 @@ def saveActivity(request):
         gestionModel.updateActivity(id, idParent, libelle, nom, budget_initial, budget_depense, reste, projection_partielle, reste_apres_projection, commentaires)
 
     if idParent != "0":
-        updateBudgetDepense(idParent, budget_initial)
-        updateReste(idParent, budget_initial)
+        updateBudgetDepense(idParent)
+        updateReste(idParent)
 
     return HttpResponse(f'Données reçues : <br>idParent : {idParent}<br>Libellé : {libelle}<br>Nom : {nom}<br>Budget Initial : {budget_initial}<br>Budget Dépensé : {budget_depense}<br>Reste : {reste}<br>Projection Partielle : {projection_partielle}<br>Reste après Projection : {reste_apres_projection}<br>Commentaires : {commentaires}')
 
-def updateBudgetDepense(id, budget_initial):
+def updateBudgetDepense(id):
     activity = gestionModel.getActivityById(id)
     subActivities = gestionModel.getSubActivitiesByIdParent(id)
     budgetDepense = 0
@@ -36,8 +36,8 @@ def updateBudgetDepense(id, budget_initial):
         print(budgetDepense)
     gestionModel.updateBudgetDepense(id, budgetDepense)
 
-def updateReste(id, budget_initial):
+def updateReste(id):
     if(id != "0"):
         activity = gestionModel.getActivityById(id)
-        reste = int(activity[0][6]) - int(budget_initial)
+        reste = int(activity[0][4]) - int(activity[0][5])
         gestionModel.updateReste(id, reste)
