@@ -42,11 +42,12 @@
                     <td>{{ activite.8 }}</td>
                     <td>{{ activite.9 }}</td>
                     <td>
-                        <button class="btn btn-outline-primary" type="button"><a
-                                href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
-                        <button class="btn btn-outline-warning" type="button">
-                                <a href="{% url 'modify_activity_form' %}?activite={{ activite }}">UPG</a></button>
-                        <button class="btn btn-outline-danger" type="button">DEL</button>
+                        <button class="btn btn-outline-primary" type="button" href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">
+                                ADD</button>
+                        <button class="btn btn-outline-warning" type="button" href="{% url 'modify_activity_form' %}?activite={{ activite }}">
+                                UPG</button>
+                        <button class="btn btn-outline-danger" type="button">
+                                DEL</button>
                     </td>
                 </tr>
                 <tr>
