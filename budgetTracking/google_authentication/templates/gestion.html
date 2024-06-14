@@ -42,12 +42,13 @@
                     <td>{{ activite.8 }}</td>
                     <td>{{ activite.9 }}</td>
                     <td>
-                        <button class="btn btn-outline-primary" type="button" href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">
-                                ADD</button>
-                        <button class="btn btn-outline-warning" type="button" href="{% url 'modify_activity_form' %}?activite={{ activite }}">
-                                UPG</button>
+                        <button class="btn btn-outline-primary" type="button" ><a class="text-decoration-none"
+                            href="{% url 'add_subActivity_form' %}?idParent={{ activite.0 }}">ADD</a></button>
+                        <button class="btn btn-outline-warning" type="button" ><a class="text-decoration-none"
+                            href="{% url 'modify_activity_form' %}?activite={{ activite }}">UPG</a></button>
                         <button class="btn btn-outline-danger" type="button">
                                 DEL</button>
+                                
                     </td>
                 </tr>
                 <tr>
@@ -61,6 +62,16 @@
                 {% endfor %}
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto">
+            <button class="btn btn-sm btn-outline-success " type="button">
+                <a href="{% url 'export_activite_excel' %}" class="text-decoration-none text-black">Export Excel</a></button>
+            <button class="btn btn-sm btn-outline-success " type="button">
+                <a href="{% url 'export_activite_csv' %}" class="text-decoration-none text-black">Export Csv</a>
+            </button>
         </div>
     </div>
 </div>

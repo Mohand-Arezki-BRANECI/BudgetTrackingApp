@@ -41,4 +41,7 @@ urlpatterns = [
     path('insert_user/', views.insert_user, name='insert_user'),
     path('gestion/', views.gestion, name='gestion'),
     
+    path('export/csv/', budgetTrackingViews.export_activite_csv, name='export_activite_csv'),
+    path('export/excel/', budgetTrackingViews.export_activite_excel, name='export_activite_excel'),
+
 ]

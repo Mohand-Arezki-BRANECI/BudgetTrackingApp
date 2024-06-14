@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import ast
 
-from budgetTracking import gestionModel, gestionController
+from budgetTracking import gestionModel, gestionController, export_to_csv, export_to_excel 
 
 
 def gestion(request):
@@ -63,3 +63,14 @@ def modify_activity(request):
         return gestionController.saveActivity(request)
     else:
         return HttpResponse('Méthode non autorisée')
+
+
+
+def export_activite_csv(request):
+    
+    export_to_csv.export_to_csv()
+    return gestion(request)
+
+def export_activite_excel(request):
+    export_to_excel.export_to_excel()
+    return gestion(request)
