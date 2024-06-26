@@ -2,6 +2,7 @@ import pandas as pd
 import mysql.connector
 import os
 import platform
+from datetime import datetime
 
 def get_download_path():
     if platform.system() == "Windows":
@@ -27,9 +28,15 @@ def export_to_csv():
         # Lire les données dans un DataFrame
         df = pd.read_sql(sql_query, conn)
 
+        # Générer le nom de fichier avec la date et l'heure actuelles
+        csv_title = datetime.now().strftime('%Y%m%d_Export_CSV_tableau_gestion_%H%M')
+        print(csv_title)
+        file_name = f'{csv_title}.csv'
+        print(file_name)
+
         # Chemin du fichier de sortie
         download_path = get_download_path()
-        output_file = os.path.join(download_path, 'output.csv')
+        output_file = os.path.join(download_path, file_name)
 
         # Exporter les données en CSV
         df.to_csv(output_file, index=False)

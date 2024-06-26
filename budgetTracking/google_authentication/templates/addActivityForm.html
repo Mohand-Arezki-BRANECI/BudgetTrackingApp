@@ -5,12 +5,12 @@
 
 <form class="p-5" action="/get_new_activity/" method="POST" style="width: 100%">
 
-    <div class="card-body text-center">
+    <div class="card-body">
 
         <div class="row m-3 shadow-lg p-3 bg-body-tertiary rounded">
 
         {% csrf_token %}
-        <h5 class="mb-3 mt-3 ">User - {{user.username}}</h5>
+        <h5 class="mb-3 mt-3 text-center">User - {{user.username}}</h5>
 
         <hr>
 
@@ -41,7 +41,14 @@
                     <textarea type="textarea" class="form-control" placeholder="Commentaires" aria-label="commentaires"
                               id="commentaires" name="commentaires"></textarea>
             </div>
-            <input type="submit" class="btn btn-success" value="Ajouter">
+            
+            
+            <div class="row justify-content-end mb-5"><div class="col-auto">
+                <button class="btn btn-sm btn-outline-secondary" type="button">
+                    <a href="{% url 'gestion' %}" class="text-decoration-none text-black">Retour</a>
+                </button>
+                <input type="submit" class="btn btn-success" value="Ajouter">
+            </div></div>
 
         </div>
     </div>

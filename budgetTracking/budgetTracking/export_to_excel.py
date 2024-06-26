@@ -29,7 +29,7 @@ def export_to_excel():
         df = pd.read_sql(sql_query, conn)
 
         # Générer le nom de fichier avec la date et l'heure actuelles
-        excel_title = datetime.now().strftime('%Y%m%d_Export_tableau_gestion_%H%M')
+        excel_title = datetime.now().strftime('%Y%m%d_Export_EXCEL_tableau_gestion_%H%M')
         print(excel_title)
         file_name = f'{excel_title}.xlsx'
         print(file_name)
@@ -64,3 +64,4 @@ def export_to_excel():
 
 if __name__ == "__main__":
     export_to_excel()
+    

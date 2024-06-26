@@ -46,7 +46,14 @@
                 <textarea class="form-control" placeholder="Commentaires" aria-label="commentaires"
                           id="commentaires" name="commentaires"></textarea>
             </div>
-            <input type="submit" class="btn btn-success" value="Ajouter">
+
+                <div class="row justify-content-end mb-5"><div class="col-auto">
+                    <button class="btn btn-sm btn-outline-secondary" type="button">
+                        <a href="{% url 'gestion' %}" class="text-decoration-none text-black">Retour</a>
+                    </button>
+                    <input type="submit" class="btn btn-success" value="Ajouter">
+                </div></div>
+    
 
         </div>
     </div>

@@ -8,7 +8,9 @@ from budgetTracking import gestionModel, gestionController, export_to_csv, expor
 
 def gestion(request):
     activities = gestionModel.getActivities()
-    return render(request, 'gestion.html', {'activites': activities})
+    activities_count = len(activities)  # Compte le nombre d'activités
+    return render(request, 'gestion.html', {'activites': activities, 'activities_count': activities_count})
+
 
 
 def add_activity_form(request):
@@ -67,7 +69,6 @@ def modify_activity(request):
 
 
 def export_activite_csv(request):
-    
     export_to_csv.export_to_csv()
     return gestion(request)
 

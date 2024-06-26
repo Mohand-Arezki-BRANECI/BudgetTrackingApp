@@ -6,43 +6,62 @@
 
 
     <form class="p-5" action="/modify_activity/" method="POST" style="width: 100%">
-
-        <div class="card-body text-center">
-
-            <div class="row m-3 shadow-lg p-3 bg-body-tertiary rounded">
-
+        <div class="card-body">
+            <div class="row m-3 table-striped shadow-lg p-3 bg-body-tertiary rounded">
                 {% csrf_token %}
-
-                <h5>User - {{ user.username }}</h5>
-
+                <h5 class="text-center">User - {{ user.username }}</h5>
                 <input type="hidden" id="id" name="id" value="{{ id }}">
-
                 <div class="row p-3 mb-5 rounded">
                     <div class="col-auto">
+                        
                         <input type="number" class="form-control" id="idParent" name="idParent" value="{{ idParent }}" disabled>
 
                         <input type="hidden" id="idParent" name="idParent" value="{{ idParent }}">
 
                     </div>
-                    </div>
-                    <hr>
-                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                </div>
+                <hr>
+                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">Libellé
+                        
                         <input type="text" class="form-control" placeholder="Libellé" aria-label="Libelle" id="libelle" name="libelle" value="{{ libelle }}" required>
+                    
                     </div>
-                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">Nom
+                    
                         <input type="text" class="form-control" placeholder="Nom" aria-label="nom" id="nom" name="nom" value="{{ nom }}" required>
+                    
                     </div>
-                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">Budget initial
+                    
                         <input type="number" class="form-control" placeholder="Budget initial" aria-label="budget_initial" id="budget_initial" name="budget_initial" value="{{ budget_initial }}" required>
+                    
                     </div>
-                    <input type="hidden" id="budget_depense" name="budget_depense" value="{{ budget_depense }}">
-                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    
+                        <input type="hidden" id="budget_depense" name="budget_depense" value="{{ budget_depense }}">
+                    
+                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">Budget Dépensé
+                
+                        <input type="number" class="form-control" placeholder="Budget Dépensé" aria-label="budget_depense" id="budget_depense" name="budget_depense" value="{{ budget_depense }}" required>
+                
+                    </div>
+                    <div class="col-sm shadow-sm p-3 mb-5 bg-body-tertiary rounded">Projection partielle
+                
                         <input type="number" class="form-control" placeholder="Projection partielle" aria-label="projection_partielle" id="projection_partielle" name="projection_partielle" value="{{ projection_partielle }}" required>
+                
                     </div>
-                    <div class="col-sm-12 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="col-sm-12 shadow-sm p-3 mb-5 bg-body-tertiary rounded">Commentaires
+                
                         <textarea class="form-control" placeholder="Commentaires" aria-label="commentaires" id="commentaires" name="commentaires">{{ commentaires }}</textarea>
+                
                     </div>
-                    <input type="submit" class="btn btn-success" value="Modifier">
+
+                    
+                    <div class="row justify-content-end mb-5"><div class="col-auto">
+                        <button class="btn btn-sm btn-outline-secondary" type="button">
+                            <a href="{% url 'gestion' %}" class="text-decoration-none text-black">Retour</a>
+                        </button>
+                        <input type="submit" class="btn btn-success" value="Modifier">
+                    </div></div>
                 </div>
             </form>
         </div>
